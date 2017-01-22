@@ -1,0 +1,33 @@
+<div class="account-container">
+       
+   <div class="container">	
+		<ul class="nav nav-tabs ">
+			<li  class="active" id="profileTab"><a ui-sref="account" data-toggle="tab">Profile</a></li>
+			<li id="changePasswordTab"><a ui-sref="changepassword"  data-toggle="tab">Change password</a></li>	
+			<li id="FriendsTab"><a ui-sref="friends"  data-toggle="tab">Friends</a></li>
+			<li id="notificationTab"><a ui-sref="notification"  data-toggle="tab">Notification</a></li>		
+		</ul>
+
+		<div class="tab-content ">
+			<div class="tab-pane active" id="ProfileTab">
+				
+			    <div class="alert alert-danger" role="alert" ng-show="authError">
+			  		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			  		<span class="sr-only">Error:</span> {{authFailureMessage}}
+				</div>
+				<div class="alert alert-success" role="alert" ng-show="authSuccess">
+						<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+			  			<span class="sr-only">ok:</span>  {{authSuccessMessage}}.
+				</div>
+				
+					<div  ng-include="accountTemplateUrl"></div>
+					
+
+			</div>			
+			
+		</div>
+  </div>
+   
+     
+ 
+</div>

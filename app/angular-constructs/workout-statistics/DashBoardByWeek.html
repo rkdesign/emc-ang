@@ -1,0 +1,86 @@
+   <div class="row" ng-if="exercisesList.length">
+   <br/>
+  	<div class="col-md-12 text-left">
+   	<span ng-repeat="exercises in exercisesList">
+   		<button type="submit"   id="{{exercises.split(' ').join('')}}" 
+   		ng-click="getSelectedWeeklyExercieGraphData(exercises)" 
+   		class="btn btn-default">{{exercises}}</button>
+   	</span>  
+   		<h4>Selected Exercise Name  <b>{{SelectedExerciseName}}</b> </h4>
+   	</div>
+   	</div>
+   	<div class="dashboard-noData text-center" ng-if="!periodWeightLiftedData.length > 0">
+   	<b>{{SelectedExerciseName}}</b>  You don't have workouts, so  there's nothing to show.
+   	</div>
+   
+    <div class="stat-dashboard" ng-if="periodWeightLiftedData.length > 0">
+		<div class="row">
+			<div class="col-sm-offset-6 col-sm-6 text-right">
+				<a href="#" tooltips tooltip-class="customTooltip" tooltip-side="left"	 tooltip-template="<ol><li> Total weight lifted is the weight multiplied by the number of Reps</li><li>Calorie is in Kcal</li></ol>"><i class="glyphicon glyphicon-question-sign">&nbsp;</i></a>
+			</div>
+		</div>
+        <div class="weight-lifted-chart-container">
+            <h3>{{graphHeading}}</h3>
+            <canvas id="weight-lifted-chart" class="chart chart-bar" options="weightLiftedDisplayOptions"
+                    data="periodWeightLiftedData" labels="periodLabels" series="periodSeries" colours="colours"
+                    ></canvas>
+        </div>        
+        <div >
+		
+	      <!--   <div class="lift-time-chart-container">
+	            <h3>{{workoutHeading}}</h3>
+	            <canvas id="lift-time-chart" class="chart chart-bar" 
+	                    data="periodTotalWorkoutsData" labels="periodLabels" series="periodSeries" colours="colours"
+	                    ></canvas>
+	        </div> -->
+	        
+	         <div class="rest-time-chart-container">
+	            <h3>{{caloriesHeading}}</h3>
+	            <canvas id="rest-time-chart" class="chart chart-bar" options="caloriesDisplayOptions"
+	                    data="periodTotalCaloriesData" labels="periodLabels" series="periodSeries" colours="colours"
+	                    ></canvas>
+	        </div>
+        </div>      
+        <div>
+            <table class="stat-table table-3">                
+                <thead>
+                <tr>
+                	<th width="30%"></th>
+                    <th width="25%" class="lastweekData">Last Week</th>
+                    <th width="25%" class="thisWeekData">This Week </th>
+                    <th width="20%" class="white">% Change </th>
+                </tr>
+                </thead>
+                <tbody>
+                	<tr >
+                		<th> Total Weight Lifted</th>
+                		 <td class="last-period-stats variable weight-lifted lastweekData">{{lastPeriodTotalWeightLifted}} lbs</td>
+                		 <td class="last-period-stats variable weight-lifted thisWeekData">{{currentPeriodTotalWeightLifted}} lbs </td>
+                		 <td class="period-delta variable weight-lifted"
+                        ng-class="{positive: periodWeightLiftedDeltaFormatted > 0}">
+                        {{periodWeightLiftedDeltaFormatted > 0 ? "+" : ""}}{{periodWeightLiftedDeltaFormatted}}%
+                    </td>
+                	</tr>
+                	<!-- <tr>
+                		<th>TOTAL WORKOUT </th>
+                		<td class="last-period-stats variable total-lift-time lastweekData">{{lastPeriodTotalWorkoutsData}}</td>
+                		<td  class="last-period-stats variable total-lift-time thisWeekData">{{currentPeriodTotalWorkoutsData}}</td>
+                		<td  class="period-delta variable total-lift-time"
+                        ng-class="{positive: periodTotalWorkoutsDelta > 0}">
+                        {{periodTotalWorkoutsDelta > 0 ? "+" : ""}}{{periodTotalWorkoutsDelta}}%
+                    </td>
+                	</tr> -->
+                	<tr>
+                		<th>Calorie</th>
+                		<td class="last-period-stats variable total-lift-time lastweekData">{{lastPeriodTotalCaloriesData}} Kcal</td>
+                		<td  class="last-period-stats variable total-lift-time thisWeekData">{{currentPeriodTotalCaloriesData}} Kcal</td>
+                		<td  class="period-delta variable total-rest-time"
+                        ng-class="{positive: periodTotalCaloriesDelta > 0}">
+                        {{periodTotalCaloriesDelta > 0 ? "+" : ""}}{{periodTotalCaloriesDelta}}%
+                    </td>
+                	</tr> 										
+                </tbody>
+            </table>
+        </div>
+    </div>
+   

@@ -1,0 +1,11 @@
+<div class="logout-container">
+  
+		<div class="alert alert-danger" role="alert" ng-show="authError">
+	  		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	  		<span class="sr-only">Error:</span> {{logoutStatus}}
+		</div>
+		<div class="alert alert-success" role="alert" ng-show="authSuccess">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+	  			<span class="sr-only">ok:</span>  {{logoutStatus}}
+		</div>
+</div>

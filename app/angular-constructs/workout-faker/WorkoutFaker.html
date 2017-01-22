@@ -1,0 +1,46 @@
+<div class="faker-container">
+    <h1 class="route-header">Workout Faker</h1>
+
+    <p>Use this tool to simulate fake workouts.</p>
+
+    <form name="fakerForm" ng-submit="fakeWorkoutStop(fakeData)" novalidate>
+        <h2>Workout Stop</h2>
+
+        <div>{{message}}</div>
+        <div class="form-group">
+            <label for="unixTime">UnixTime:</label>
+            <input class="form-control" type="number" id="time" ng-model="unixTime">
+        </div>
+        <div class="form-group"
+                ><label for="login">Login:</label>
+            <input class="form-control" type="text" id="login" ng-model="login">
+        </div>
+        <div class="form-group">
+            <label for="exercise">Exercise:</label>
+            <input class="form-control" type="text" id="exercise" ng-model="exercise">
+        </div>
+        <div class="form-group">
+            <label for="weight">Weight:</label>
+            <input class="form-control" type="number" id="weight" ng-model="weight">
+        </div>
+        <div class="form-group">
+            <label for="sets">Sets:</label>
+            <input class="form-control" type="number" id="sets" ng-model="sets">
+        </div>
+        <div class="form-group">
+            <label for="reps">Reps:</label>
+            <input class="form-control" type="number" id="reps" ng-model="reps">
+        </div>
+        <div class="form-group">
+            <label for="approximateContractionTime">Approximate Contraction Time:</label>
+            <input class="form-control" type="number" id="approximateContractionTime"
+                   ng-model="approximateContractionTime">
+        </div>
+        <div class="form-group">
+            <label for="approximateExtensionTime">Approximate Extension Time:</label>
+            <input class="form-control" type="number" id="approximateExtensionTime" ng-model="approximateExtensionTime">
+        </div>
+        <button class="btn btn-primary" type="submit">Execute</button>
+
+    </form>
+</div>

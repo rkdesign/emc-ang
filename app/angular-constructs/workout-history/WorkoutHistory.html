@@ -1,0 +1,29 @@
+<div class="workout-history-container">      
+    <form class="form-horizontal" >    	
+    	<div class="btn-group col-sm-6 btn-group-margin" role="group" >
+	        <span class="active btn btn-default" ng-click="getHistroyByWeek()" id="byWeek">Week</span>
+	        <span class="btn btn-default" ng-click="getHistroyByMonth()" id="byMonth">Month</span>
+	        <span class="btn btn-default" ng-click="getHistroyByYear()" id="byYear">Year</span>
+	        <span class="btn btn-default" ng-click="getHistroyByCustom()" id="byCustom">Custom</span>
+	    </div>
+    
+    	<div class="col-sm-6 btn-group-margin" ng-show="currentUser.userRoles !=='admin' && userList.length > 0">
+		            <select ng-model="user" class="form-control" 
+		            		ng-change="getSelectedUserDetails(user)" 	            		           		
+		            		ng-options="user.nickname for user in userList track by user.value"></select>
+	     </div>	 
+    	<div class="col-sm-6 fr btn-group-margin selectedUser" ng-show="currentUser.userRoles !=='admin' && SelectedUserName" class="selectedUser">	    		 
+	     		<label for="nickname" class="control-label tleft col-sm-8">Selected User Nickname  :</label>
+				<label class="col-sm-4 control-label tleft">{{SelectedUserName}}</label>
+    	</div> 
+    	
+    	<div class="btn-group col-sm-12 text-left btn-group-margin" role="group" ng-show="showButons">
+        	<span class="active btn btn-default"  ng-click="getHistoryByDate()" id="byDate">By Date </span>
+       	 	<span class="btn btn-default"  ng-click="gethistoryByExercise()" id="byExercise">By Exercise </span>       	 
+    	</div>
+  		
+		
+    </form>
+<div  ng-include="historyTemplateUrl"></div>
+  
+</div>

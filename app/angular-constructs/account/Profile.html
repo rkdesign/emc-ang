@@ -1,0 +1,90 @@
+		<form name="profileForm"  class="form-horizontal" ng-submit="updateUserDetails(userDetails)" novalidate>
+					<br />
+					
+			       
+			        <div class="form-group">
+			            <label for="email" class="control-label col-sm-3">Email :</label>
+			             <div class="col-sm-9">
+			            <input class="form-control" type="text" placeholder="Email" id="email" ng-keyup="usernameMap($event)" ng-model="userDetails.email"
+			            		validation-no-space="true"
+			       				validation-field-required="true"        			
+			        			validation-email="true"       
+			            >
+			            </div>
+			        </div>
+			        
+			         <div class="form-group">
+			            <label for="nickname" class="control-label col-sm-3" >Nick Name :</label>
+			             <div class="col-sm-9">
+			            <input name="nickname" class="form-control" type="text" id="nickname" placeholder="Nick Name" ng-model="userDetails.nickname" >
+			            </div>
+			        </div>
+			     			        
+					<div class="form-group">
+						<label for="firstName" class="control-label col-sm-3">First Name :</label>
+						 <div class="col-sm-9">
+						 <input type="text" class="form-control" id="firstName"  placeholder="first name" ng-model="userDetails.firstName"	>
+						  </div>
+					</div>
+					<div class="form-group">
+						<label for="lastname" class="control-label col-sm-3">Last Name :</label> 
+						 <div class="col-sm-9">
+						<input type="text" class="form-control" id="lastname"  placeholder="Last Name" ng-model="userDetails.lastName">
+						    </div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3">Gender :</label>
+						 <div class="col-sm-9">
+						<div class="radio">
+							<label class="checkbox-inline"> 
+								<input type="radio" name="Gender" id="male" value="male"  checked="" ng-model="userDetails.gender"> Male
+							</label> 
+							<label class="checkbox-inline">
+							 	<input type="radio" name="Gender" id="female" value="female"  ng-model="userDetails.gender"> Female
+							</label>
+						</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="lastname" class="control-label col-sm-3">Age :</label> 
+						 <div class="col-sm-9">
+						<input type="text" class="form-control" id="age" placeholder="Age"  ng-model="userDetails.age" 									
+									only-digits								
+									validation-max-length="2">
+									</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="lastname" class="control-label col-sm-3">Address :</label> 
+						 <div class="col-sm-9">
+						<input type="text" class="form-control" id="address" placeholder="Address"  ng-model="userDetails.mailingAddress">
+								</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="lastname" class="control-label col-sm-3">Phone Number :</label> 
+						 <div class="col-sm-9">
+							<input type="text" class="form-control" id="phonenumber" placeholder="Phonenumber"  ng-model="userDetails.phonenumber" only-digits>
+						 </div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3">Mail Configuration :</label>
+						 <div class="col-sm-9">
+						<div class="radio">
+							<label class="checkbox-inline"> 
+								<input type="checkbox" ng-model="userDetails.smartWeightsUserOptions.enableWorkoutCompleteEmail" >Enable Workout Complete Email
+							</label> <br/>
+							<label class="checkbox-inline">
+								<input type="checkbox" ng-model="userDetails.smartWeightsUserOptions.enableWeeklySummaryEmail" >Enable Weekly Summary Email
+							</label>
+						</div>
+						</div>
+					</div>				
+					
+					<div class="form-group">
+			        	<div class="col-sm-offset-3 col-sm-9">
+							 <button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</div>
+					
+	</form>

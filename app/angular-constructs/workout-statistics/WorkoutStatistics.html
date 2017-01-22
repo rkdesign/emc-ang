@@ -1,0 +1,35 @@
+<div class="workout-summary-container">
+   <form class="form-horizontal" >
+	    <div class="btn-group col-sm-6 btn-group-margin" role="group" >
+	        <span class="active btn btn-default" ng-click="getWeeklyExerciseReport()" id="byWeek">Week</span>
+	        <span class="btn btn-default" ng-click="getMonthExerciseReport()" id="byMonth">Month</span>
+	        <span class="btn btn-default" ng-click="getStatisticByYear()" id="byYear">Year</span>
+	        <span class="btn btn-default" ng-click="getStatisticByCustom()" id="byCustom">Custom</span>
+	    </div>    
+	    
+	    <div class="col-sm-6 btn-group-margin" ng-show="currentUser.userRoles !=='admin' && userList.length > 0">
+		            <select ng-model="user" class="form-control" 
+		            		ng-change="getSelectedUserDetails(user)" 	            		           		
+		            		ng-options="user.nickname for user in userList track by user.value"></select>
+	     </div>	 
+	       
+	  	<div class="col-sm-6 fr btn-group-margin selectedUser" ng-show="currentUser.userRoles !=='admin' && SelectedUserName" >	     		
+	     		<label for="username" class="control-label tleft  col-sm-8 ">Selected User Nickname  :</label>
+				<label class="control-label tleft  col-sm-4">{{SelectedUserName}}</label>
+    	</div> 
+	         
+        <div class="col-sm-12 text-left" ng-show="showButons">
+        	<button type="button" ng-click="getTotalWeightLifted()" id="weightliftedByWeek" class="btn btn-default ">
+        		<span class = "glyphicon glyphicon-signal"></span> Summary
+        	</button>
+        	<button type="button" ng-click="getWeightLiftedByExercises()" id="weightliftedByExercises" class="btn btn-default">
+        		<span class ="glyphicon glyphicon-signal"></span> Exercises Detials
+        	</button>
+        </div>
+        
+      	
+		
+		</form>   
+    	
+    <div class="col-sm-12"  ng-include="dashBoardTemplateUrl"></div>
+</div>

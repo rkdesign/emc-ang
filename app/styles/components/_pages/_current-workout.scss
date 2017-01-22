@@ -1,0 +1,32 @@
+.current-workout-container {
+    table {
+        th {
+            padding: 0.2em;
+            text-align: center;
+        }
+        td {
+            padding: 0.2em;
+            text-align: center;
+        }
+    }
+    .previous-update-table {}
+    .current-update-table {
+        th {
+            padding: 0.5em;
+            font-size: 1.4em;
+        }
+        td {
+            padding: 0.5em;
+            font-size: 1.7em;
+        }
+    }
+}
+
+.not-working-out-prompt {
+    font-size: 1em;
+}
+@media all and (min-width: 990px) {	
+	.not-working-out-prompt {
+    font-size: 2em;
+}
+}

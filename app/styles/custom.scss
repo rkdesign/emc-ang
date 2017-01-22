@@ -1,0 +1,229 @@
+.route-header {
+  margin: 0.2em 0em 0.2em 0em;
+  padding: 0em;
+}
+
+form .requiredFieldLabel:after {
+    content: " *";
+    color: red;
+}
+
+form .CustomValidationError {
+    position: relative;
+    font-size: 0.8em;
+    color: red;
+}
+
+form .CustomValidationError.checkboxradioerror {
+    display: block;
+}
+.nav-tabs>li>a {
+	font-size:12px;
+	padding: 5px 10px;
+}
+.nav-tabs>li {   
+    margin-bottom: -2px;
+}
+
+@media all and (min-width: 990px) {
+
+	.nav-tabs>li>a {
+		font-size:19px;
+		padding: 10px 15px;
+	}
+	
+}
+.fr{
+	float:right
+}
+.fl{
+	float:left;
+}
+.tcenter{
+	text-align:center !important;
+}
+.tleft{
+	text-align:left !important;
+}
+.tright {
+	text-align:right !important;
+}
+.sw-logoCnt{
+	max-width:72px ;
+	max-height:124px;
+	float:left;	
+	padding:0 0 0 5px;
+}
+.sw-titleCnt{
+	max-width:145px ;
+	max-height:124px;	
+	float:left;
+	padding:0 5px 0 0;
+}
+
+.logoDiv{	
+	padding:5px 0;	
+	background:#f5f5f5;	
+    width: 100%;  
+    display:none;
+     position: relative;
+     float:left;
+     margin-top: 65px;
+}
+.logoBar{		
+	margin: 0 auto;
+	max-width: 864px;
+	padding: 0 16px;
+	}
+
+.moduleTitleCnt{
+	width:610px;
+	min-height:124px;
+	float:left;
+	margin: 0 10px;
+}	
+	
+.moduleTitle{
+	font-family: 'impact';
+	font-size:55px;
+	font-weight:bold;
+	text-transform: uppercase;	
+	padding-top: 35px;
+	line-height: 60px;
+	text-align:center;
+	color:#626262;
+	letter-spacing: 2px;
+}
+.mobilelogo{
+	display:block;
+	margin-right: 15px;
+}
+.userListSelectbox{
+	width:300px;
+}
+.customDropDrow{
+	overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 350px;
+    min-width: 180px;
+}
+@media all and (min-width: 760px) {
+	.logoDiv{
+		margin-top: 0px;
+		display:block;
+		}
+		.mobilelogo{
+			display:none;
+		}
+}
+
+.open>.dropdown-menu > li::before,
+.nav,
+.nav-tabs > li::before {
+  content: none;
+}
+ul.dropdown-menu li{
+	    padding-left: 0px;
+}
+.dropdown-menu>li>a {
+	    padding: 3px 10px;
+}
+
+
+.facebook_btn {
+    background-image: url("../images/facebook_icon.png");    
+    background-position:5px center, center center;
+    padding-left: 30px;
+    background-repeat: no-repeat;
+  }
+.facebook_btn:focus, 
+.facebook_btn:hover{
+	 background-position:5px center, center center;
+}
+
+ul.notetxt{
+	font-size:10px;
+	list-style: none;
+	li{
+		list-style: none;
+		::before{
+			content:"";
+		}
+	}
+}
+
+.admintabs{
+	padding-top:0px !important;	
+	li{
+	padding-left: 0px !important;
+	}
+}
+.usernfcbtns{
+		button{
+			margin:0 0 10px 10px;
+		}
+	}
+#mobile_nav_icon {
+    border-bottom: 9px double #444; 
+    border-top: 3px solid #444;
+    height: 3px;
+    width: 25px;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+    margin-left: 10px;
+    top: 23px;
+    padding: 1.5px;
+    background: none;
+}	
+.mailButton{
+	margin-top: 26px;
+}
+.btn-group-margin{
+	margin-top: 5px;
+    margin-bottom: 5px;
+}
+.userclass{
+	margin-bottom:10px;
+	}
+.btn-default.disabled, 
+.btn-default.disabled.active, 
+.btn-default.disabled.focus, 
+.btn-default.disabled:active, 
+.btn-default.disabled:focus, 
+.btn-default.disabled:hover, 
+.btn-default[disabled], 
+.btn-default[disabled].active,
+.btn-default[disabled].focus, 
+.btn-default[disabled]:active, 
+.btn-default[disabled]:focus, 
+.btn-default[disabled]:hover,
+.btn-default.active, 
+.btn-default:active{
+	background-color:#2aabd2;
+	border: 1px solid #2aabd2;
+	color:#fff;
+	opacity:1;
+}
+.customTooltip{
+	width:350px;
+	&.history{
+		width:250px;
+	}
+	text-align:left;
+	ol {
+		padding:0;
+		margin:0;
+		font-size:14px;
+		li{
+		    padding-left: 25px;
+		}
+		li::before{
+		content:counter(list) " )";
+		}
+	}
+}

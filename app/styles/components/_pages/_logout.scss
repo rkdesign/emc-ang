@@ -1,0 +1,27 @@
+.logout-container {
+    .workout-summary {
+        .workout-header {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: rgb(184, 173, 255);
+            .machine {}
+            div {
+                display: inline-block;
+                font-size: 1.3rem;
+                margin-right: 3rem;
+            }
+        }
+        .sets {
+            table {
+                margin: 0rem 0rem 2rem 0rem;
+                th {
+                    text-align: center;
+                }
+                td {
+                    text-align: center;
+                    background-color: #F7F7F7;
+                }
+            }
+        }
+    }
+}

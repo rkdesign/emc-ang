@@ -1,0 +1,42 @@
+<form name="firendsForm"  class="form-horizontal" novalidate>
+					<br/>
+			
+	<div class="col-sm-6">	
+		<div  ng-if="friendList.length">
+			<div class="form-group">
+				<label  class="col-sm-12" >Following Friends  </label> 
+			</div>				
+			<div class="form-group" ng-repeat="user in friendList">
+				<label  class="control-label col-sm-6 tleft" >{{user.firstName}}</label>
+				<div class="col-sm-6">
+					 <button type="submit" class="btn btn-primary" ng-click="removeFriend(user,$index)">Remove Friend</button>
+				</div>			 	
+			</div>
+		</div>				
+	</div>	
+	
+	<div class="col-sm-6">
+		<div class="form-group">
+			<label for="email" class="control-label" >Search By Name or Email :</label> 
+		</div>		
+		<div class="form-group">			
+			<div class="col-sm-9">
+			<input type="text" class="form-control" id="friendName" placeholder="Search By Name of Email" ng-model="friendName"			   
+				validation-field-required="true" />
+			 </div>
+			 	<div class="col-sm-3">
+				 <button type="submit" class="btn btn-primary" ng-click="searchFriendName(friendName)">Search</button>
+			</div>
+		</div>
+		
+		<div ng-if=userDetails>
+			<div class="form-group">						
+				<label  class="control-label col-sm-9 tleft"  >{{userDetails.firstName}} </label>
+			 	<div class="col-sm-3">
+					 <button type="submit" class="btn btn-primary" ng-click="sendRequest(userDetails)">Send Request</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</form>

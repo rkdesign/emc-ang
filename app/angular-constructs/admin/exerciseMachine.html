@@ -1,0 +1,42 @@
+<form name="fitnessForm" class="form-inline" novalidate>
+	<div id="fitnessCenter" ng-if="exerciseMachineList.length">
+		<table class="stat-table table-3 adminTable"  >
+			<thead>
+				<tr>
+					<th width="5%">&nbsp;</th>
+					<th width="15%">Name</th>
+					<th width="15%">UID</th>
+					<th width="25%">Exercises Name</th>
+					<th width="20%">Weight Range</th>
+					<th width="10%">Edit</th>
+					<th width="10%">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="exerciseMachine in exerciseMachineList">
+					<td data-th="{{$index + 1}}">{{$index + 1}}</td>
+					<td data-th="name" class="set">
+						<div ng-hide="editMode">{{exerciseMachine.name}}</div> 
+						<input type="text" ng-show="editMode" ng-model="exerciseMachine.name" 	validation-field-required="true" />
+					</td>
+					<td data-th="uid">
+						<div ng-hide="editMode">{{exerciseMachine.uid}}</div> 
+						<input type="text" ng-show="editMode" ng-model="exerciseMachine.uid" validation-field-required="true" />
+					</td>
+					<td data-th="description">
+						<div ng-hide="editMode" ng-repeat="exercises in exerciseMachine.currentExercises"> {{$index + 1}}) {{exercises.name}},</div> 
+						<dropdown-multiselect ng-show="editMode" pre_selected="exerciseMachine.currentExercises" extra_settings="{enableEntervalue: false}" model="myExercise" options="exerciseMachine.allExercises"></dropdown-multiselect>
+					</td>
+					<td data-th="weightRange"><span ng-hide="editMode" ng-repeat="weightRange in exerciseMachine.weightRange"> {{weightRange}}, </span> 
+						<dropdown-multiselect ng-show="editMode" pre_selected="exerciseMachine.weightRange" extra_settings="{enableEntervalue: true}" model="myWeights" options="exerciseMachine.weightRange"></dropdown-multiselect></td>
+
+					<td>
+						<button type="submit" ng-hide="editMode" ng-click="editMode = true;  editExerciseMachine(exerciseMachine)" class="btn btn-primary">Edit</button>
+						<button type="submit" ng-show="editMode" ng-click="editMode = false; saveExerciseMachine(exerciseMachine, myWeights, myExercise)" class="btn btn-success">Save</button>
+						<button type="submit" ng-show="editMode" ng-click="editMode = false; cancelEdit()" class="btn btn-danger">Cancel</button>
+					</td>
+					<td><button type="button" ng-hide="editMode" ng-click=" deleteExerciseMachine(exerciseMachine,$index)" class="btn btn-danger">Delete</button></td>
+			</tbody>
+		</table>
+	</div>
+</form>

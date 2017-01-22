@@ -1,0 +1,53 @@
+<form name="adminUsersNFCForm" class="form-horizontal" novalidate>
+       
+ 	<div class="form-group" ng-show="showFilter">
+          <label for="nfcuser" class="col-sm-3 control-label">Search by User : </label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="nfcuser" placeholder="User Name" ng-model="NFCUser.nickname">
+          </div>
+   
+  
+    
+	<div id="NFCUserList" class="col-sm-12"  ng-if="NFCuserList.length" >				 
+		  <table class="stat-table table-3 adminTable">
+		  <thead>
+             <tr>             	
+                 <th width="15%">Nickname</th>
+				 <th width="30%">User Email</th>
+                 <th width="25%">NFC ID</th>  
+                 <th width="15%">Create / Edit</th>
+                 <th width="15%">Delete</th>                              
+             </tr>
+             </thead>
+             <tbody>
+              <tr ng-repeat="user in NFCuserList | filter: NFCUser ">               	
+                 <td data-th="Name" class="set">
+                 	<div ng-hide="editMode">{{user.nickname}}</div>
+                 	<input type="text" ng-show="editMode" ng-model="user.nickname" 
+                 		validation-field-required="true"  
+                 	 />
+                 </td>
+				 <td data-th="Email" class="set">
+                 	<div ng-hide="editMode">{{user.email}}</div>
+                 	<input type="text" ng-show="editMode" ng-model="user.email" 
+                 		validation-field-required="true"  
+                 	 />
+                 </td>
+                 <td data-th="Description">
+                 	<div ng-hide="editMode">{{user.uid}}</div>
+                 	<input type="text" ng-show="editMode" ng-model="user.uid"
+                 		validation-field-required="true"  
+                 	/>
+                 </td>
+                 <td data-th="Edit">                 	
+                 	<button type="submit" ng-hide="editMode" id="edit_{{$index+1}}" ng-click="editMode = true; editNFC(user, $index+1)" class="btn btn-primary">Edit</button>
+                 	<button type="submit" ng-show="editMode" id="create_{{$index+1}}" ng-click="createNFC(user, $index+1)" class="btn btn-info">Create</button>
+                 	<button type="submit" ng-show="editMode" id="save_{{$index+1}}" ng-click="editMode = false; updateNFC(user, $index+1)" class="btn btn-success">Save</button>
+					<button type="submit" ng-show="editMode" id="canceledit_{{$index+1}}" ng-click="editMode = false; cancelEdit($index+1)" class="btn btn-danger">Cancel</button>
+                 </td>
+                 <td data-th="Delete"><button type="button" id="delete_{{$index+1}}"  ng-click=" deleteNFC(user,$index)"  class="btn btn-danger">Delete</button></td>
+             </tbody>
+		  </table>				
+     </div>
+      </div>
+</form>

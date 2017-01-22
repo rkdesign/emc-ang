@@ -1,0 +1,27 @@
+<table class="table-5 previous-update-table">
+    <colgroup>
+        <col span="1"></col>
+        <col span="1"></col>
+        <col span="1"></col>
+        <col span="1"></col>
+        <col span="1"></col>
+    </colgroup>
+    <thead>
+    <tr>
+        <th>WEIGHT</th>
+        <th>SET</th>
+        <th>REP</th>
+        <th>CONTRACT TIME</th>
+        <th>EXTEND TIME</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="rep in repArray">
+        <td>{{rep.weight}}</td>
+        <td>{{rep.set + 1}}</td>
+        <td>{{rep.sequence + 1}}</td>
+        <td>{{rep.contractionDuration}}</td>
+        <td>{{rep.extensionDuration}}</td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,37 @@
+<form name="adminForm"  novalidate>
+	<div id="exerciselist"  ng-if="exerciseList.length"  ng-show="adminAuth">				 
+		  <table class="stat-table table-3 adminTable">
+		  <thead>
+             <tr>
+             	 <th width="5">S.No</th>
+                 <th width="30">Exercise Name</th>
+                 <th width="30">Description</th>  
+                 <th width="20">Edit</th>
+                 <th width="15">Delete</th>                              
+             </tr>
+             </thead>
+             <tbody>
+              <tr ng-repeat="exercise in exerciseList"> 
+              	<td data-th="S.No">{{$index + 1}}</td>
+                 <td data-th="name" class="set">
+                 	<div ng-hide="editMode">{{exercise.name}}</div>
+                 	<input type="text" ng-show="editMode" ng-model="exercise.name" 
+                 		validation-field-required="true"  
+                 	 />
+                 </td>
+                 <td data-th="description">
+                 	<div ng-hide="editMode">{{exercise.description}}</div>
+                 	<input type="text" ng-show="editMode" ng-model="exercise.description"
+                 		validation-field-required="true"  
+                 	/>
+                 </td>
+                 <td data-th="Edit">
+                 	<button type="submit" ng-hide="editMode" ng-click="editMode = true; editExercise(exercise)" class="btn btn-primary">Edit</button>
+                 	<button type="submit" ng-show="editMode" ng-click="editMode = false; saveExercise(exercise)" class="btn btn-primary">Save</button>
+					<button type="submit" ng-show="editMode" ng-click="editMode = false; cancelEdit()" class="btn btn-danger">Cancel</button>
+                 </td>
+                 <td data-th="Delete"><button type="button" ng-hide="editMode" ng-click=" deleteExercise(exercise,$index)"  class="btn btn-danger">Delete</button></td>
+             </tbody>
+		  </table>				
+     </div>
+</form>

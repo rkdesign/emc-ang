@@ -1,0 +1,76 @@
+<div class="account-container">
+ 
+   <div class="container">
+		<ul class="nav nav-tabs admintabs" ng-show="adminAuth">
+			<li role="presentation" class="active" id="exerciseList"><a ui-sref="admin" data-toggle="tab">Exercise List</a></li>
+			<li role="presentation" id="exerciseMachineList"><a ui-sref="exerciseMachine"  data-toggle="tab">Exercise Machine</a></li>
+			<li role="presentation" id="nfcTag"><a ui-sref="admin-user-NFC" data-toggle="tab">Users</a></li>
+			<li role="presentation" id="trainingcenter"><a ui-sref="fitnessCompany" data-toggle="tab">Fitness Company</a></li>
+			<li role="presentation" id="fitnesscenter"><a ui-sref="fitnessCenter" data-toggle="tab">Fitness Center</a></li>	
+			<li role="presentation" id="mailCenter"><a ui-sref="mailCenter" data-toggle="tab">Mail</a></li>	
+			<li role="presentation" id="exerciseInProgress"><a ui-sref="exerciseInProgress" data-toggle="tab">Exercise In Progress</a></li>	
+			<li role="presentation" id="adminDebug"><a ui-sref="adminDebug" data-toggle="tab">Debug</a></li>		
+		</ul>
+		
+		
+		<div class="tab-content ">
+			<div class="tab-pane active" id="adminTab">
+				
+			    <div class="alert alert-danger" role="alert" ng-show="authError">
+			  		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			  		<span class="sr-only">Error:</span> {{authFailureMessage}}
+				</div>
+				<div class="alert alert-success" role="alert" ng-show="authSuccess">
+						<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+			  			<span class="sr-only">ok:</span>  {{authSuccessMessage}}.
+			  			 <span ng-show="updatedList.length>0"> <br/>{{updatedList}}.</span>
+			  			 <sapn ng-show="deleteList.length>0"><br/>{{deleteList}}</span>
+				</div>
+				
+				<div class="row" ng-show="adminAuth">		  			
+					<div class="col-md-12">
+						<div  ng-show="adminCnt">
+							<button type="button" ng-show="createForm" ng-click="getCreateExerciseForm()" id="createExerciseForm" class="btn btn-primary pull-right">Create Exercise</button>
+							<button type="button" ng-show="allExerices" ng-click="getAllExerciseList()" id="getAllExercises" class="btn btn-primary pull-right">Exercise list</button>
+						</div>
+						<div ng-show="fitnessCnt">
+							<button type="button"  ng-show="createExerForm" ng-click="getCreateExerciseMachineForm()" class="btn btn-primary pull-right">Create Exercise Machine</button>
+							<button type="button"  ng-show="allExericesMachine" ng-click="getAllExerciseMachineList()" class="btn btn-primary pull-right">Exercise Machine list</button>
+						</div>
+						
+						
+						<div ng-show="usernfc" class="usernfcbtns">
+							<div class="btn-group col-sm-6 userclass" role="group" >
+						        <span class="active btn btn-default" id="nfcbtn" ui-sref="admin-user-NFC">NFC Tags</span>
+						        <span class="btn btn-default" id="modificationbtn" ui-sref="admin-user-modification" >User Modification</span>
+						        <span class="btn btn-default" id="privilegesbtn" ui-sref="admin-user-privileges" >User Privileges</button>
+						    </div> 
+						<!-- 
+							<button type="button"  ng-show="nfctag" ui-sref="admin-user-NFC" class="btn btn-primary pull-right">NFC Tags</button>
+							<button type="button"  ng-show="usermodification" ui-sref="admin-user-modification" class="btn btn-primary pull-right">User Modification</button>
+							<button type="button"  ng-show="userprivileges" ui-sref="admin-user-privileges" class="btn btn-primary pull-right">User Privileges</button>
+							 -->
+						</div>
+						<div  ng-show="fitnessCnt">
+							<button type="button" ng-show="createFitnessCenter" ng-click="loadFitnessCenterForm()" id="createFitnessCenter" class="btn btn-primary pull-right">Create Fitness Center</button>
+							<button type="button" ng-show="allFitnessCenterList" ng-click="getAllFitnessCenterList()" id="getAllFitnessCenter" class="btn btn-primary pull-right">Fitness Center list</button>
+						</div>
+						<div  ng-show="fitnessCompanyCnt">
+							<button type="button" ng-show="createFitnessCompany" ng-click="loadFitnessCompanyForm()" id="createFitnessCenter" class="btn btn-primary pull-right">Create Fitness Company</button>
+							<button type="button" ng-show="allFitnessCompanyList" ng-click="getAllFitnessCompanyList()" id="getAllFitnessCenter" class="btn btn-primary pull-right">Fitness Company list</button>
+						</div>
+					</div>
+				</div>
+		
+				<div  ng-include="adminTemplateUrl"></div>
+		 
+		 	</div>
+		 
+		 </div>
+		 
+
+  </div>
+
+
+
+</div>

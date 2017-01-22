@@ -1,0 +1,84 @@
+  <div class="detailed-workout-breakdown">
+   <p class="not-working-out-prompt route-header" ng-if="!dateOrganizedData.length > 0">You don't have workouts, so  there's nothing to show.</p>
+	<div class="row" ng-if="dateOrganizedData.length > 0">
+			<div class="col-sm-offset-6 col-sm-6 text-right">
+				<a href="#" tooltips tooltip-class="customTooltip history" tooltip-side="left"	 tooltip-template="<ol><li> Calorie is in Kcal</li><li>Work done is in Joules</li><li>Max. Power is in Watt</li><li>Rest time is in second</li></ol>"><i class="glyphicon glyphicon-question-sign">&nbsp;</i></a>
+			</div>
+		</div>
+        <div class="day-summary" ng-repeat="exercise in dateOrganizedData">        
+        <div class="exercise-header">{{exercise.exerciseName}}</div>  
+        <div class="desktopTable">
+            <div ng-repeat="workoutDate in exercise.dateObj" class="workout-summary">  
+             <!--<div class="day-header">{{workoutDate.workoutRecord[0].dateString}}</div> -->        	 
+            	<div  class="workouts">
+            		  <div class="sets table-responsive" id="responsiveTable">
+                        <table class="col-sm-12 table-striped cf">                            
+                            <thead class="cf">
+                            <tr>                              
+                                <th width="15%">{{workoutDate.workoutRecord[0].dateString}}</th>
+                                <th width="10%">Weight</th>
+                                <th width="10%">Reps</th>
+                                <!--<th width="25%">Contract Time</th>-->
+                                <th width="13%">Calorie</th>
+                                <th width="18%">Work Done</th>
+								<th width="18%">Max. Power </th>
+								<th width="18%">Rest Time</th>
+                            </tr>
+                            </thead>
+                            <tbody ng-repeat="workout in workoutDate.workoutRecord"  class="workouts">                            
+	                            <tr ng-repeat="set in workout.sets"> 
+									<td data-th="set">{{set.count}}</td>								
+	                                <!--<td data-th="Set" class="set">{{set.count}}</td>-->
+	                                <td data-th="Weight" > {{set.weight}}</td>
+	                                <td data-th="Reps" > {{set.reps.length}}</td>
+	                                <!--<td data-th="Contract Time" > {{set.averageContractionDuration}}</td>-->
+	                                <td data-th="Calorie"> <span ng-if="set.totalCalories">{{Math.round(set.totalCalories)}}</span> </td>
+		                            <td data-th="Work"><span ng-if="set.totalWork">{{Math.round(set.totalWork)}}</span></td>
+									<td data-th="maxpower" ><span ng-if="set.maxPower">{{Math.round(set.maxPower)}}</span></td>
+									<td data-th="Rest Time" class="{{set.cssClassName}}" > {{set.restTime}}</td>
+	                            </tr>  
+                            </tbody>                           
+                        </table>
+                    </div>            	
+            	</div>            
+            </div>  
+            <br>
+            </div>
+              <div class="mobileTable">
+            <div ng-repeat="workoutDate in exercise.dateObj" class="workout-summary">  
+             <div class="day-header">{{workoutDate.workoutRecord[0].dateString}}</div>         	 
+            	<div  class="workouts">
+            		  <div class="sets table-responsive" id="responsiveTable">
+                        <table class="col-sm-12 table-striped cf stat-table table-3">                            
+                            <thead class="cf">
+                            <tr>                              
+                                <th width="13%">{{workoutDate.workoutRecord[0].dateString}}</th>
+                                <th width="10%">Weight</th>
+                                <th width="10%">Reps</th>
+                                <!--<th width="25%">Contract Time</th>-->
+								<th width="13%">Calorie (K) </th>
+                                <th width="18%">Work Done (J)</th>   
+								<th width="18%">Max. Power (W) </th>									
+								<th width="18%">Rest Time (s)</th>
+                            </tr>
+                            </thead>
+                            <tbody ng-repeat="workout in workoutDate.workoutRecord"  class="workouts">
+                            <tr ng-repeat="set in workout.sets">                                
+                                <td class="set">{{set.count}}</td>
+                                <td> {{set.weight}}</td>
+                                <td> {{set.reps.length}}</td>
+                                <!--<td> {{set.averageContractionDuration}}</td>-->
+								<td> <span ng-if="set.totalCalories">{{Math.round(set.totalCalories)}} cal</span> </td>
+	                            <td> <span ng-if="set.totalWork">{{Math.round(set.totalWork)}}</span></td>
+								<td> <span ng-if="set.maxPower">{{Math.round(set.maxPower)}}</span></td>			
+								<td class="{{set.cssClassName}}" > {{set.restTime}}</td>   
+                            </tr>                            
+                            </tbody>                           
+                        </table>
+                    </div>            	
+            	</div>            
+            </div>  
+            <br>
+            </div>
+        </div>
+    </div>

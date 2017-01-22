@@ -1,0 +1,51 @@
+<form name="fitnesscenter" class="form-horizontal" novalidate>          
+    
+	<div id="fitnessCenterList"  >				 
+		  <table class="stat-table table-3 adminTable">
+		  <thead>
+             <tr>             	
+                 <th>Fitness Center Name</th>
+                 <th>Description</th>
+                 <th>Phone Number</th>
+                 <th>Address</th>  
+                 <th>Edit</th>
+                 <th>Delete</th>                              
+             </tr>
+             </thead>
+             <tbody>
+              <tr ng-repeat="fitnessCenter in fitnessCenterList  ">               	
+                 <td data-th="name" class="set">
+                 	<div ng-hide="editMode">{{fitnessCenter.name}}</div>
+                 	<input type="text" ng-show="editMode" ng-model="fitnessCenter.name" 
+                 		validation-field-required="true"  
+                 	 />
+                 </td>
+                 <td data-th="description">
+                 	<div ng-hide="editMode">{{fitnessCenter.description}}</div>
+                 	<input type="text" ng-show="editMode" ng-model="fitnessCenter.description"
+                 		validation-field-required="true"  
+                 	/>
+                 </td>
+                 <td data-th="description">
+                 	<div ng-hide="editMode">{{fitnessCenter.phoneNumber}}</div>
+                 	<input type="text" ng-show="editMode" ng-model="fitnessCenter.phoneNumber"
+                 		validation-field-required="false"  
+                 	/>
+                 </td>
+				<td data-th="description">
+                 	<div ng-hide="editMode">{{fitnessCenter.address}}</div>
+                 	<input type="text" ng-show="editMode" ng-model="fitnessCenter.address"
+                 		validation-field-required="false"  
+                 	/>
+                 </td>
+
+                 <td data-th="Edit">                 	
+                 	<button type="submit" ng-hide="editMode" id="edit_{{$index+1}}" ng-click="editMode = true; loadFitnessCenterEditForm(fitnessCenter, $index+1)" class="btn btn-primary">Edit</button>
+                 	<button type="submit" ng-show="editMode" id="save_{{$index+1}}" ng-click="editMode = false; updateFitnessCenter(fitnessCenter, $index+1)" class="btn btn-success">Save</button>
+					<button type="submit" ng-show="editMode" id="canceledit_{{$index+1}}" ng-click="editMode = false; cancelEdit($index+1)" class="btn btn-danger">Cancel</button>
+                 </td>
+                 <td data-th="Delete"><button type="button" id="delete_{{$index+1}}"  ng-click="deleteFitnessCenter(fitnessCenter,$index)"  class="btn btn-danger">Delete</button></td>
+             </tbody>
+		  </table>				
+     </div>
+</form>

@@ -1,0 +1,17 @@
+<form name="adminDashBoardForm" class="form-horizontal" >
+		<div class="form-group">
+            <label for="username" class=" col-sm-2">Users List :</label>
+             <div class="col-sm-5">
+             <dropdown-multiselect  pre_selected="dummyList" 
+             						extra_settings="{enableEntervalue: false}"
+									model="users" 
+									options="userList"></dropdown-multiselect>										
+           </div>
+            <div class="col-sm-3">
+           	 	<button type="button" ng-csv="getArray" lazy-load="true" ng-click="getSelectedUsersDetails()"  ng-click="getSelectedUsersDetails()" class="btn btn-primary">Download CSV File</button>
+            </div>
+            <div class="col-sm-2">
+           	 	<button type="button"  ui-sref="admin-workout-history" class="btn btn-primary pull-right">History list</button>
+            </div>
+        </div>
+</form>

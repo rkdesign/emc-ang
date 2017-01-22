@@ -1,0 +1,83 @@
+<div class="current-workout-container">
+ <form class="form-horizontal" >
+
+    <div class="current-workout-stats">
+        <p class="not-working-out-prompt route-header" ng-if="liveWorkoutData.length < 1">You're not currently working out, so
+            there's nothing to show.</p>
+
+        <h2 class="route-header" ng-if="liveWorkoutData.length > 0">{{liveWorkoutData.strengthExerciseDefinition.name}}</h2>
+
+        <p class="not-working-out-prompt" ng-if="liveWorkoutData.length > 0 && !liveWorkoutData.sets.length">Go get 'em!</p>
+
+        <div class="current-update-container" ng-if="liveWorkoutData.sets.length">
+            <h3>Last Rep</h3>
+            <table class="table-5 current-update-table">
+                <colgroup>
+                    <col span="1"></col>
+                    <col span="1"></col>
+                    <col span="1"></col>
+                    <col span="1"></col>
+                    <col span="1"></col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>WEIGHT</th>
+                    <th>SET</th>
+                    <th>REP</th>
+                    <th>CONTRACT TIME</th>
+                    <th>EXTEND TIME</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td data-th="weight">{{liveWorkoutData.sets[liveWorkoutData.sets.length-1].weight}}</td>
+                    <td data-th="set" style="color: {{updateColor}}">{{liveWorkoutData.sets.length}}</td>
+                    <td data-th="rep" style="color: {{updateColor}}">
+                        {{liveWorkoutData.sets[liveWorkoutData.sets.length-1].reps.length}}
+                    </td>
+                    <td data-th="contraction-time">
+                        {{liveWorkoutData.sets[liveWorkoutData.sets.length-1].reps[liveWorkoutData.sets[liveWorkoutData.sets.length-1].reps.length-1].contractionDuration}}
+                    </td>
+                    <td data-th="extension-time">
+                        {{liveWorkoutData.sets[liveWorkoutData.sets.length-1].reps[liveWorkoutData.sets[liveWorkoutData.sets.length-1].reps.length-1].extensionDuration}}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+       
+
+        <div class="previous-updates-container"  ng-if="liveWorkoutData.sets.length > 1">
+            <h3>Workout Summary</h3>
+           <!--  <liveWorkoutUpdateTable></liveWorkoutUpdateTable> -->
+           <table class="table-5 previous-update-table">
+    <colgroup>
+        <col span="1"></col>
+        <col span="1"></col>
+        <col span="1"></col>
+        <col span="1"></col>
+        <col span="1"></col>
+    </colgroup>
+    <thead>
+    <tr>
+        <th>WEIGHT</th>
+        <th>SET</th>
+        <th>REP</th>
+        <th>CONTRACT TIME</th>
+        <th>EXTEND TIME</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="rep in repArray">
+        <td>{{rep.weight}}</td>
+        <td>{{rep.set  }}</td>
+        <td>{{rep.rep }}</td>
+        <td>{{rep.contractionDuration}}</td>
+        <td>{{rep.extensionDuration}}</td>
+    </tr>
+    
+            
+        </div>
+    </div>
+</div>

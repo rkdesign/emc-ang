@@ -1,0 +1,210 @@
+/**
+*
+* Table
+*
+**/
+
+table {
+  margin-top: $lineHeight;
+  width: 100%;
+
+  thead {
+    background: $colorBlue;
+    color: #ffffff;
+  }
+
+  th {
+    text-align: center;
+    display: none;
+    font-family: $fontHighlight;
+    @include type--medium;
+  }
+
+  tr {
+    @include medium {
+      border-bottom: 1px solid #ffffff;
+    }
+  }
+
+  tbody {
+    background: $colorGrayBackground;
+  }
+
+  td {
+    display: block;
+   
+
+    // This is to re-plicate the table-headers for mobile
+    &::before {
+      content: attr(data-th) " :";
+      display: inline-block;
+      color: #ffffff;
+      background: $colorBlue;     
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 50%;
+      max-height: 100%;
+      font-family: $fontHighlight;
+      font-size: 16px;
+      font-weight: 400;
+      padding-left: $lineHeight/2;
+      white-space: nowrap;
+      text-align:left;
+       
+
+      @include medium {
+        display: none;
+        
+      }
+    }
+  }
+
+  th,
+  td {
+    position: relative;   
+	text-align: left;
+    padding-left: 60%;	
+    @include medium {
+      display: table-cell; 
+          
+    }
+  }
+
+  th {
+    @include medium {
+      padding: $lineHeight;
+      padding-top: 13px;
+      padding-bottom: $lineHeight/2 - 1;
+    }
+  }
+
+  td {
+    @include medium {
+      padding: 0.1em;
+       text-align: center; 
+    }
+  }
+}
+
+td:last-child::after {
+  content: "";
+  display: block;
+  background: #ffffff;
+  height: 1px;
+  left: 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  @include medium {
+    display: none;
+  }
+}
+
+.table-2 {
+  col {
+    width: $mediumContainer / 2;
+    @include wide {
+      width: $wideContainer / 2;
+    }
+  }
+
+  th,
+  td {
+    @include medium {
+      &:first-child {
+        border-right: 2px solid #ffffff;
+      }
+    }
+  }
+}
+
+.table-3 {
+  col {
+    width: $mediumContainer / 3;
+    @include wide {
+      width: $wideContainer / 3;
+    }
+  }
+
+  th,
+  td {
+    @include medium {
+      &:nth-child(2) {
+        border-left: 2px solid #ffffff;
+        border-right: 2px solid #ffffff;
+      }
+       &:nth-child(3) {
+        border-right: 2px solid #ffffff;       
+      }
+      &:nth-child(4) {
+        border-right: 2px solid #ffffff;       
+      }
+      &:nth-child(5) {
+        border-right: 2px solid #ffffff;       
+      }
+      &:nth-child(6) {
+        border-right: 2px solid #ffffff;       
+      }
+    }
+  }
+}
+
+.table-4 {
+  col {
+    width: $mediumContainer / 4;
+    @include wide {
+      width: $wideContainer / 4;
+    }
+  }
+
+  th,
+  td {
+    @include medium {
+      &:nth-child(2),
+      &:nth-child(3) {
+        border-left: 2px solid #ffffff;
+        border-right: 2px solid #ffffff;
+      }
+    }
+  }
+}
+.desktopTable{
+	display:none;
+}
+.mobileTable{
+	display:block;
+}
+
+@media all and (min-width: 990px) {
+	.desktopTable{
+		display:block;
+	}
+	.mobileTable{
+		display:none;
+	}
+}
+
+.mobileTable{
+	table{
+		 th {
+	        padding: 0.1em;
+	        display:table-cell;
+	         text-align: left;
+	         padding-left:5px;
+	         font-size: .7em; 
+	         border-bottom:1px solid #fff;
+	    }
+	    td {                
+            text-align: center;
+       		font-size: .8em; 
+       		padding-left:5px;
+       		display:table-cell;
+       		border-bottom:1px solid #fff;
+       		 &::before {
+       		 	display:none !important;
+       		 }  
+          }
+	}
+}

@@ -1,0 +1,130 @@
+<div class="register-container">
+    <form name="registerForm"  class="form-horizontal" ng-submit="register(credentials)" novalidate>
+         <div class="alert alert-danger" role="alert" ng-show="registrationError">
+  			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  			<span class="sr-only">Error:</span> {{authFailureMessage}}
+		</div>
+		
+       
+        <div class="form-group">
+            <label for="email" class="control-label col-sm-3">Email :</label>
+            <div class="col-sm-9">
+            <input class="form-control" type="text" name="Email" placeholder="Email" id="email" ng-keyup="usernameMap($event)" ng-model="credentials.email"
+            		validation-no-space="true"
+       				validation-field-required="true"        			
+        			validation-email="true">
+        	</div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="control-label col-sm-3">Password :</label>
+            <div class="col-sm-9">
+	            <input class="form-control" type="password" name="password" id="password" placeholder="Password"  ng-model="credentials.password"
+	            		validation-min-length="8" 
+	            		validation-one-number="true" 
+	            		validation-one-upper-case-letter="true" 
+	            		validation-one-lower-case-letter="true"
+						validation-field-required="true" 						
+						validation-no-space="true">
+			</div>					
+        </div>
+        <div class="form-group">
+			<label for="email" class="control-label col-sm-3">Confirm Password :</label> 
+			<div class="col-sm-9">
+				<input type="password" class="form-control" name="confirm password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" ng-model="credentials.confirmpassword" 
+	            		validation-no-space="true"
+	       				validation-field-required="true"        			
+	        			validation-confirm-password="true"/>
+			</div>		
+		</div>
+		 <div class="form-group">
+            <label for="username" class="control-label col-sm-3">Nick Name :</label>
+            <div class="col-sm-9">
+	            <input class="form-control" type="text" id="nickname"  placeholder="Nickname" ng-model="credentials.nickname"
+	            		>
+        	</div>
+        </div>
+      <!--    <div class="form-group">
+            <label for="username" class="control-label col-sm-3">Username :</label>
+            <div class="col-sm-9">
+	            <input class="form-control" type="text" id="username"  placeholder="Username" ng-model="credentials.username"
+	            		>
+        	</div>
+        </div> -->
+		
+		
+		<div class="form-group">
+			<label for="firstName" class="control-label col-sm-3">First Name :</label>
+			<div class="col-sm-9">
+			 	<input type="text" class="form-control" id="firstName"  placeholder="first name" ng-model="credentials.firstName"
+	            		>
+		 	</div>
+		</div>
+		<div class="form-group">
+			<label for="lastname" class="control-label col-sm-3">Last Name :</label> 
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="lastname"  placeholder="Last Name" ng-model="credentials.lastName"	
+				>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-3">Gender :</label>
+			<div class="col-sm-9">
+				<div class="radio">
+					<label class="checkbox-inline"> 
+						<input type="radio" name="Gender" id="male" value="male"  ng-model="credentials.gender"
+							> Male
+					</label> 
+					<label class="checkbox-inline">
+					 	<input type="radio" name="Gender" id="female" value="female" input ng-model="credentials.gender"
+					 	> Female
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="age" class="control-label col-sm-3">Age :</label> 
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="age" placeholder="Age"  ng-model="credentials.age"											
+						only-digits		
+						validation-max-length="2" >
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="address" class="control-label col-sm-3">Address :</label> 
+			<div class="col-sm-9">			
+				<input type="text" class="form-control" id="address" placeholder="Address"  ng-model="credentials.mailingAddress"
+						>
+			</div>					
+		</div>
+		
+		<div class="form-group">
+			<label for="phonenumber" class="control-label col-sm-3">Phone Number :</label> 
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="phonenumber" placeholder="Phonenumber"  ng-model="credentials.phonenumber"
+						only-digits>
+			</div>
+		</div>
+		
+		
+		<!-- <div class="form-group">
+			<label for="gymtimings" class="control-label col-sm-3">Number of Gym Visits :</label>
+			<div class="col-sm-9">
+				 <select class="form-control" id="gymtimings" ng-model="credentials.gymtimings"	>			
+				 		<option value="" selected="selected">select</option> 	
+					<option value="Twoorless">Two or less</option>
+					<option value="Threetofive">Three to five</option>
+					<option value="Sixormore">Six or more</option>
+				</select>
+			</div>
+		</div> -->
+		
+		 <div class="form-group">
+        	<div class="col-sm-offset-3 col-sm-9">
+				 <button class="btn btn-primary" type="submit">Register</button>
+			</div>
+		</div>
+       
+
+    </form>
+</div>

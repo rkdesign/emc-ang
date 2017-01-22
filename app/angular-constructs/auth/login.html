@@ -1,0 +1,51 @@
+<div class="login-container">   
+	
+	<form name="loginForm" class="form-horizontal" ng-submit="login(credentials)" autocomplete="off" novalidate>
+    <div class="alert alert-danger" role="alert" ng-show="loginError">
+  		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  		<span class="sr-only">Error:</span> {{authFailureMessage}}
+	</div>
+	<div class="alert alert-success" role="alert" ng-show="loginSuccess">
+			<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+  			<span class="sr-only">ok:</span>  {{authSuccessMessage}}
+		</div>
+	   
+      
+        <div class="form-group">
+            <label for="identifier" class="control-label col-sm-2">Email :</label>
+            <div class="col-sm-10">
+	            <input class="form-control" type="text" id="email" autocomplete="off" ng-model="credentials.email" name="email" ng-model-options="{ getterSetter: true }"
+	        			validation-no-space="true"
+       					validation-field-required="true"        			
+        				validation-email="true">
+	        			<!-- <ul class="notetxt" ng-hide="noteCnt">
+	        			 <li>Note : Enter user name With out space and special character</li>
+	        			</ul> -->	        			
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password"  class="control-label col-sm-2" >Password :</label>
+             <div class="col-sm-10">
+	            <input class="form-control" type="password" id="password" autocomplete="off" ng-model="credentials.password"  name="password" 
+	       				validation-field-required="true"        			
+	        			validation-min-length="4">
+	        			<!-- <ul class="notetxt" ng-hide="noteCnt">
+	        				<li>		 1) Password should me minium 8 character </li>
+	        				<li>		 2) One Uppercase letter </li>
+	        				<li>		 3) One Lowercase letter </li>	
+	        				<li>		 3) One Number letter </li>	        						 
+	        			</ul> -->
+        	</div>
+        </div>
+     	<div class="form-group">
+        	<div class="col-sm-offset-2 col-sm-10">
+				<button class="btn btn-primary" type="submit">Login</button>
+      			<button class="btn btn-primary" ui-sref="resetpassword" >Forgot Password</button>     	      			
+      			<!-- <button type="button" class="btn btn-primary btn-large facebook_btn"  ng-click="getPublicProfile()">Login with Facebook</button>
+      			  <button type="button" class="btn btn-primary btn-large facebook_btn"  ng-click="facebooklogout()">Login out</button>-->
+			</div>
+		</div>
+
+		
+    </form>
+</div>

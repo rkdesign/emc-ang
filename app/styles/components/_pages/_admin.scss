@@ -1,0 +1,37 @@
+.adminTable{
+	
+	thead{
+		th{
+			 text-align:left;
+			 border:0;
+			 border-collapse: collapse;
+			 padding:5px 5px 5px 15px;
+		}
+	}
+	tbody{
+		td{
+			text-align:left;
+			padding:5px 5px 5px 15px;			
+			border:0;
+			border-collapse: collapse;
+		}
+	}
+	
+}
+.defaultTable{
+	thead{
+		th{
+			display:table-cell !important;
+			font-size: .7em; 
+		}
+	}
+	tbody{
+		td{
+			display:table-cell !important;
+			font-size: .8em; 
+			&::before {
+           		 	display:none !important;
+           		 }  
+		}
+	}
+}

@@ -1,0 +1,30 @@
+<form name="userModification" class="form-horizontal" novalidate>
+   <label for="nfcuser" class="col-sm-3 control-label">Search by User : </label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="nickname" placeholder="User Name" ng-model="User.nickname">
+          </div>
+       
+        <br/>
+        
+
+ <div id="UserList"  class="col-sm-12"  ng-if="userList.length > 0" >				 
+		  <table class="stat-table table-3 adminTable" >
+		  <thead>
+             <tr>      
+             	 <td width="15%">S.No</td>       	
+                 <th width="25%">Nickname</th>   
+                 <th width="40%">User Email</th>           
+                 <th width="20%">Delete</th>                              
+             </tr>
+             </thead>
+             <tbody>
+              <tr ng-repeat="user in userList | filter: User ">   
+              	 <td data-th="S.No"  class="set">{{$index + 1}}</td>                	
+                 <td data-th="name" class="set">{{user.nickname}}</td> 
+                 <td data-th="email" class="set">{{user.email}}</td>
+                 <td data-th="Delete"><button type="button" id="deleteUser"  ng-click=" deleteUser(user, $index)"  class="btn btn-danger">Delete</button></td>
+              </tr>
+             </tbody>
+		  </table>				
+     </div>
+</form>

@@ -1,0 +1,39 @@
+<form name="exerciseinProgressForm" class="form-horizontal" novalidate>
+			<div class="form-group">
+			   <label  class="control-label col-sm-3">Training Center :</label>
+			    <div class="col-sm-9">
+			    <select ng-model="fitnessCenter" class="userListSelectbox form-control"	
+			    		ng-change="getCurrentExerciseList(fitnessCenter)"		    		 			            		           		
+			    		ng-options="fitnessCenter.name for fitnessCenter in FitnessCenterList track by fitnessCenter.id"></select>
+			  	</div>           
+			</div>
+			<div class="dashboard-noData text-center btn-group-margin" ng-show="showError">
+				<b> You don't have workouts, so  there's nothing to show.</b>
+			</div>
+			<div id="graph-container">
+			
+				<div class="row col-sm-5" >
+					<canvas id="canvas0" class="chart-base" type="HorizontalBar" data="chartdata"  height="250" width="300" ></canvas>
+					<div class="col12 text-center" id="exerciseName0"></div>	            
+				</div>		
+				<div class="row col-sm-2" >&nbsp;</div>
+			 
+				<div class="row col-sm-5" >			
+					<canvas id="canvas1" class="chart-base" data="chartdata" height="250" width="300"></canvas>	
+				<div class="col12 text-center" id="exerciseName1"></div>					
+				</div>
+				
+	        	<div class="row col-sm-5" >
+					<canvas id="canvas2" class="chart-base" data="chartdata"  height="250" width="300"></canvas>	
+				<div class="col12 text-center" id="exerciseName2"></div>					
+				</div>		
+				
+				<div class="row col-sm-2" >&nbsp;</div>
+				
+				<div class="row col-sm-5" >
+					<canvas id="canvas3" class="chart-base" data="chartdata" height="250" width="300"></canvas>	
+				<div class="col12 text-center" id="exerciseName3"></div>					
+				</div>  
+        	</div>
+		
+</form>

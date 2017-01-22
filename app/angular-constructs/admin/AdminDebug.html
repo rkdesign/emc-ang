@@ -1,0 +1,50 @@
+<form name="exerciseinProgressForm" class="form-horizontal"   novalidate>
+	<ul class="nav nav-tabs admintabs" >
+				<li role="presentation" id="exerciseMachine" class="active"><a href="javascript:void(0)" data-toggle="tab" ng-click="getFitnessCenters()">Exercise Machine</a></li>
+	</ul>
+	
+			<div class="form-group" ng-if="exerciseMachineList.length > 0">
+			   <label  class="control-label col-sm-3">Exercise Machine  :</label>
+			    <div class="col-sm-9">
+			    <select ng-model="exerciseMachine" class="userListSelectbox form-control"	
+			    		ng-change="getCurrentExerciseList(exerciseMachine)"
+			    		ng-options="exerciseMachine.name for exerciseMachine in exerciseMachineList track by exerciseMachine.uid"></select>
+			  	</div>           
+			</div>
+<div class="workout-history-container"> 
+	<div class="detailed-workout-breakdown">  
+		<p class="not-working-out-prompt route-header" ng-if="!dateKeys.length > 0">You don't have workouts, so  there's nothing to show.</p>	
+		<div class="day-summary" ng-repeat="key in dateKeys" ng-if="dateKeys.length > 0">      
+        	<div class="exercise-header">{{fitnessCenterOrganizedData[key].dateString}}</div>
+			<div class="workout-summary" ng-repeat="workout in fitnessCenterOrganizedData[key]">			
+	        <div class="desktopTable">		   
+						<div class="exercise-header">User Name : {{workout.userName}}</div>
+		            	<div class="workouts" ng-repeat="record in workout.exercisesNames">
+						<div class="exercise-header">Exercise Name : {{record.ExerciseName}}</div>
+							<div  class="workouts" >
+								  <div class="sets table-responsive" id="responsiveTable">
+									<table class="col-sm-12 table-striped cf">                            
+										<thead class="cf">
+										<tr>                              
+											<th width="30%">Set</th>
+											<th width="30%">Reps</th>
+											<th width="30%">Weight</th>																						
+										</tr>
+										</thead>
+										<tbody class="workouts">                            
+											<tr ng-repeat="set in record.sets">    
+												<td class="set">{{$index+1}}</td>
+												<td > {{set.reps.length}}</td>	
+												<td> {{set.weight}}</td>																							
+											</tr>  
+										</tbody>                           
+									</table>
+								</div>            	
+							</div> 
+						</div>						
+		            </div>  
+	            </div>
+			</div>
+        </div>
+</div>
+</form>

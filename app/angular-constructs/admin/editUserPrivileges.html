@@ -1,0 +1,157 @@
+<div>
+	<form name="EditUserPrivilegesForm" class="form-horizontal" novalidate>
+	      <div class="form-group">
+	            <label for="userlist" class="col-sm-5 control-label">User List :</label>
+	             <div class="col-sm-7">
+		            <select ng-model="user" class="userListSelectbox form-control" 
+		            		ng-change="getSelectedUserDetails(user)" 	            		           		
+		            		ng-options="user.nickname for user in userList track by user.value"></select>
+	           </div>           
+	        </div>
+	
+
+ <div ng-show="SelectedUserName">
+	<div  class="slide-animate-container">
+		<div class="form-group row">
+			<label class="control-label col-sm-5">Selected User Nickname :</label>
+			<label class="col-sm-7 control-label tleft">{{SelectedUserName}}</label>
+		</div>				
+		  <table class="stat-table table-3 adminTable" ng-if="userPrivileges">
+		  <thead>
+		  	<tr>
+		  		<th width="30%">Administer</th>
+		  		<th width="25%">Mapped Roles </th>
+		  		<th width="10%">&nbsp;</th>
+		  		<th width="10%">&nbsp;</th>
+		  		<th width="25%">Available Roles</th>
+		  		
+		  	</tr>
+		  </thead>
+             <tr>
+              	<td>Fitness Company Administer</td>
+              	<td data-th="Administer">
+             		<div ng-if="fitnesCompanyAdmin">
+             			<span ng-repeat="Privileges in userPrivileges.fitnessCompaniesAdministrated">             				
+             				<label>{{$index+1}} ) {{Privileges.name}}  
+							</label><br/>
+             			</span>
+             		</div> 
+             		<div ng-show="!fitnesCompanyAdmin">
+             			No Role are mapped
+             		</div>            		
+	  			</td>
+	  			<td>
+	  				<div ng-if="fitnesCompanyAdmin">
+	  					<span ng-repeat="Privileges in userPrivileges.fitnessCompaniesAdministrated">
+             				<a href="javascript:void(0)" class="btn btn-info btn-sm"  ng-click="removeFitnessCompanyPrivilegesToUser(Privileges , user, $index)">
+          							<span class="glyphicon glyphicon-arrow-right"></span>
+       						 </a><br/>
+             			</span>
+             		</div>
+	  			</td>
+	  			<td>
+	  				<div ng-if="TrainingCenterList.length > 0">
+		  				<span ng-repeat="trainingCenter in TrainingCenterList"> 
+	             				<a href="javascript:void(0)" class="btn btn-info btn-sm" ng-click="updateFitnessCompanyPrivilegesToUser(trainingCenter, user)">
+	          							<span class="glyphicon glyphicon-arrow-left"></span>
+	       						 </a><br/>
+	             		</span>
+	             	</div>
+	  			</td>
+	  			<td data-th="Mapped Roles">
+             		<div ng-if="TrainingCenterList.length > 0">
+             			<span ng-repeat="trainingCenter in TrainingCenterList">             				
+             				<label>{{$index+1}} ) {{trainingCenter.name}}      
+							</label><br/>
+             			</span>
+	        		</div>
+	        		<div ng-if="TrainingCompanyMessage">
+	        			{{TrainingCompanyMessage}}
+	        		</div>
+             	 </td>
+              	</tr>
+              	<tr>
+             	<td>Fitness Centers Administer</td>      
+             	<td data-th="Administer"> 
+             			<span ng-if="fitnesCenterAdmin">
+	             			<span ng-repeat="Privileges in userPrivileges.fitnessCentersAdministrated">             				
+	             				<label>{{$index+1}} ) {{Privileges.name}}	             				
+		  							</label><br/>
+	             			</span>
+             			</span>  
+             			<span ng-show="!fitnesCenterAdmin">
+             				No Role are mapped
+             			</span>             		 
+	           	</td>
+	           	<td>
+	           		<div ng-if="fitnesCenterAdmin">
+	             			<span ng-repeat="Privileges in userPrivileges.fitnessCentersAdministrated"> 
+	             				<a href="javascript:void(0)" class="btn btn-info btn-sm" ng-click="removeFitnessCenterPrivilegesToUser(Privileges, user, $index)">
+          							<span class="glyphicon glyphicon-arrow-right"></span>
+       						    </a><br/>
+	             			</span>
+             		</div> 
+	           	</td>
+	           	<td>
+	           		<div ng-if="fitnessCenterList.length > 0">
+	             	 		<span ng-repeat="fitnessCenter in fitnessCenterList"> 
+	             				<a href="javascript:void(0)" class="btn btn-info btn-sm" ng-click="updateFitnessCenterPrivilegesToUser(fitnessCenter, user)">
+          							<span class="glyphicon glyphicon-arrow-left"></span>
+       						   </a><br/>
+	             			</span>
+		        	</div>
+	           	</td>
+	           	<td data-th="Mapped Roles">
+	             	 	<div ng-if="fitnessCenterList.length > 0">
+	             	 		<span ng-repeat="fitnessCenter in fitnessCenterList">             				
+	             				<label>{{$index+1}} ) {{fitnessCenter.name}}	             				
+		  							</label><br/>
+	             			</span>
+		        		</div>
+	             	 	<div ng-if="FitnessCenterMessage">
+		        			{{FitnessCenterMessage}}
+		        		</div>
+             	 </td>
+             	 </tr>
+             	 <tr>         
+	                <td>Admin</td>  
+	                <td data-th="Administer"> 
+	             		<div ng-if="admin">	             		
+	             			<span ng-repeat="Privileges in userPrivileges.roles">             				
+	             				<label>{{$index+1}} ) {{Privileges.name}}	             				
+		  							</label><br/>
+	             		   </span>
+             			</div>	
+             			<div ng-if="!admin">
+		        			No Admin Roles are Mapped
+		        		</div></td>   
+             	<td>
+             		<div ng-if="admin">	             		
+	             			<div ng-repeat="Privileges in userPrivileges.roles"> 
+	             				<a href="javascript:void(0)" class="btn btn-info btn-sm" ng-click="removeAdminPrivileges(Privileges, user, $index)" >
+          							<span class="glyphicon glyphicon-arrow-right"></span>
+       						    </a><br/>
+	             		   </div>
+             		</div>   
+             	 </td> 
+             	 <td>
+             	 <div ng-if="!admin">
+            				<a href="javascript:void(0)" class="btn btn-info btn-sm"  ng-click="assignAdminPrivileges(user)"  >
+        							<span class="glyphicon glyphicon-arrow-left"></span>
+     						</a>
+             		</div>
+             	 </td>       
+             	<td data-th="Mapped Roles">
+             		<div ng-if="!admin">			
+	             		<label>1) Admin  </label>
+             		</div>	
+             		<div ng-if="admin">
+		        			Admin Roles is Mapped
+		        	</div>  
+             	</td>                                 
+             </tr>           
+             </table>               
+        </div>             	
+  	</div>
+  	</form>
+  </div>	

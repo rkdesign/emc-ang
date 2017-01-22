@@ -1,0 +1,28 @@
+<form name="adminDashBoardForm" class="form-horizontal" >
+		<div class="form-group">
+            <label for="username" class="control-label col-sm-3">User List :</label>
+             <div class="col-sm-6">
+	            <select ng-model="user" class="userListSelectbox form-control" 
+	            		ng-change="getSelectedUserDetails(user)" 	            		           		
+	            		ng-options="user.nickname for user in userList track by user.value"></select>
+	            		
+	            		
+           </div>
+            <div class="col-sm-3" ng-show="downloadBtn">
+           	 	<button type="button"  ui-sref="admin-file-download" class="btn btn-primary pull-right">Download</button>
+            </div>
+        </div>
+
+
+ <div ng-show="showGraph">
+	<div  class="slide-animate-container">
+		<div class="form-group row">
+			<label for="username" class="control-label col-sm-4">Selected User Nickname :</label>
+			<label class="col-sm-8 control-label tleft">{{SelectedUserName}}</label>
+		</div>
+		<br/>
+		<div class="slide-animate" ng-include="templateUrl"></div>
+  	</div>
+</div> 
+
+</form>

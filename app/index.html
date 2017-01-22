@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="" ng-app="swwc">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SWWC</title>
+
+    <!-- Essential web libraries (bower) -->
+    <!-- jQuery -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Angular  -->
+    <script src="bower_components/angular/angular.js"></script>
+    <style>.nav, .pagination, .carousel, .panel-title a {
+        cursor: pointer;
+    }</style>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+    <!-- moment.js -->
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <script src="bower_components/moment-duration-format/lib/moment-duration-format.js"></script>
+
+    <!-- Chart.js -->
+    <script src="bower_components/Chart.js/Chart.min.js"></script>
+    <script src="bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
+    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css"></link>
+
+    <!-- angular-ui-form-validation.js -->
+    <script src="bower_components/angular-ui-form-validation/dist/angular-ui-form-validation.js"></script>
+    
+    <!-- underscore.js -->
+    <script src="bower_components/underscore/underscore-min.js"></script>
+    
+    
+	<!-- Angularja ui-events-->    
+    <script type="text/javascript" src="bower_components/angular-ui-event/dist/event.js"></script>
+
+    <!-- Bootstrap CSS -->
+   
+    <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+   <!-- <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.min.css"></link> -->
+    
+    <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap-theme.min.css"></link>
+    
+	<script type="text/javascript" src="bower_components/angular-tooltips/dist/angular-tooltips.min.js"></script>
+	<link rel="stylesheet" href="bower_components/angular-tooltips/dist/angular-tooltips.min.css"></link>
+ 
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+    <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+        <link rel="canonical" href="http://www.example.com/">
+        -->
+    <!-- Page styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/custom.css">
+	
+<!-- Disable Browser cache --> 
+<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
+   
+</head>
+
+<body ng-controller='ApplicationController'>
+<header class="app-bar promote-layer">
+    <div class="app-bar-container">
+        <!-- <button ><img src="images/hamburger.svg" alt="Menu"></button> -->
+        <button class="menu"  id="mobile_nav_icon"></button>
+        
+        <h1 class="logo">Smart Health Clubs</h1>
+        <div class="mobilelogo"><img src="images/sw-logo-mobile.png" class="img-responsive" title="Smart Health Clubs" /></div>
+        <section class="app-bar-actions">
+            <!-- Put App Bar Buttons Here -->
+            <!-- e.g <button><i class="icon icon-star"></i></button> -->
+        </section>
+    </div>
+</header>
+<nav class="navdrawer-container promote-layer">
+    <h4>Menu</h4>
+    
+    <ul> 
+     <!-- normal user links -->
+        <li ng-show="currentUser && currentUser.userRoles !=='admin'"><a ui-sref="workout-statistics">Dashboard</a></li>        
+        <li ng-show="currentUser && currentUser.userRoles !=='admin'"><a ui-sref="workout-history">Workout History</a></li>        
+        <li ng-show="currentUser && currentUser.userRoles !=='admin'"><a ui-sref="workout-live">Live Workout</a></li>        
+        
+     <!-- admin links -->
+        <li ng-show="currentUser && currentUser.userRoles ==='admin'"><a ui-sref="admin-workout-statistics">Dashboard</a></li>
+        <li ng-show="currentUser && currentUser.userRoles ==='admin'"><a ui-sref="admin-workout-history">Workout History</a></li>
+        <li ng-show="currentUser && currentUser.userRoles ==='admin'"><a ui-sref="admin-workout-live">Live Workout</a></li>   
+        
+        <li ng-show="currentUser  && currentUser.userRoles ==='admin'"><a ui-sref="admin">Admin</a></li>
+                
+     <!-- default links -->
+        <li ng-show="currentUser" ><a ui-sref="account">My Account</a></li>
+        <li ng-show="currentUser"><a ui-sref="logout">Log Out</a></li>        
+        
+        <li ng-show="!currentUser"><a ui-sref="register">Register</a></li>
+        <li ng-show="!currentUser"><a ui-sref="login">Log In</a></li>
+        <!--  li ng-show="!currentUser"><a ui-sref="resetpassword">Forgot password</a></li-->
+        
+    </ul>
+</nav>
+
+
+
+<div class="logoDiv">
+	<div class="logoBar">
+		<div class="row">
+		    <div class="sw-logoCnt"> <img src="images/sw-logo.png"  title="Smart Weights" /></div>
+		    <div class="moduleTitleCnt"><div class="moduleTitle" ng-show="moduleTitle">{{moduleTitle}}</div></div>
+		    <div class="sw-titleCnt"> <img src="images/sw-title.png"  title="Smart Weights" /></div>
+		 </div>
+	 </div>
+</div>
+	<div class="userTitle"   >
+		<div class="welcome" ng-show="currentUser.username">
+        	Welcome, <span class="username">{{currentUser.nickname}}</span>
+    	</div>
+    </div>
+<main>
+    
+    <div ui-view>
+    </div>
+</main>
+<!-- build:js scripts/main.min.js -->
+
+<!-- Services -->
+<script src="angular-constructs/services/WorkoutSummaryProcessor.js"></script>
+<script src="angular-constructs/services/CurrentWorkoutProcessor.js"></script>
+<script src="angular-constructs/services/WorkoutStatisticService.js"></script>
+
+
+<script src="angular-constructs/services/WorkoutDataService.js"></script>
+
+<script src="angular-constructs/services/AdminDataService.js"></script>
+<script src="angular-constructs/services/DashBoardOperations.js"></script>
+
+<script src="angular-constructs/services/CSVConvertor.js"></script>
+<script src="angular-constructs/services/mailService.js"></script>
+
+<script src="angular-constructs/shared/FacebookIntegration.js"></script>
+<script src="angular-constructs/shared/Chart.HorizontalBar.js"></script>
+<!--script src="angular-constructs/shared/angular-HorizontalBarChart.js"></script-->
+
+<!-- Components/Pages -->
+<script src="angular-constructs/auth/Authentication.js"></script>
+<script src="angular-constructs/shared/CustomDropdownMultiselect.js"></script>
+<script src="angular-constructs/shared/OnlyDigits.js"></script>
+<script src="angular-constructs/shared/ExerciseModelPopup.js"></script>
+<script src="angular-constructs/shared/Application.js"></script>
+<script src="angular-constructs/account/Account.js"></script>
+<script src="angular-constructs/workout-live/WorkoutLive.js"></script>
+<script src="angular-constructs/workout-history/WorkoutHistory.js"></script>
+<script src="angular-constructs/workout-statistics/WorkoutStatistics.js"></script>
+<script src="angular-constructs/workout-faker/WorkoutFaker.js"></script>
+<script src="angular-constructs/admin/Admin.js"></script>
+<script src="angular-constructs/admin/TrainingCenter.js"></script>
+<script src="angular-constructs/admin/NFCTags.js"></script>
+<script src="angular-constructs/admin/AdminDebug.js"></script>
+
+<!-- Common/General App -->
+<script src="angular-constructs/navigation.js"></script>
+<script src="angular-constructs/util.js"></script>
+<script src="angular-constructs/app.js"></script>
+<!-- endbuild -->
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-XXXXX-X', 'auto');
+    ga('send', 'pageview');
+    
+    (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/en_US/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+    
+</script>
+<!-- Built with love using Web Starter Kit -->
+</body>
+
+</html>

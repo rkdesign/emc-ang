@@ -1,0 +1,12 @@
+<div class='btn-group ' data-ng-class='{open: open}'>
+     <button class='btn btn-small dropdown-toggle' data-ng-click='open=!open;openDropdown()'>Select <span class="caret"></span></button>    
+      <ul class='dropdown-menu customDropDrow' aria-labelledby='dropdownMenu'>
+          <li role='presentation'><a data-ng-click='selectAll()'><i class='glyphicon glyphicon-ok-sign'></i>  Check All</a></li>
+          <li role='presentation'><a data-ng-click='deselectAll();'><i class='glyphicon glyphicon-remove-sign'></i>  Uncheck All</a></li>                  
+          <li class='divider'></li>
+		  <li ng-show=settings.enableEntervalue><div class='dropdown-header'><input type='text' class='form-control' ui-event={blur:'onBlur($event)'} style='width: 100%;'  placeholder='Enter 20,30'></div></li>
+		  <li ng-show=settings.enableEntervalue class='divider'></li>
+		  <li role='presentation'  data-ng-repeat='option in options'> <a  ng-if=!option.name data-ng-click='setSelectedItem()'>{{option}}<span data-ng-class='isChecked(option)'></span></a>
+          <a  ng-if=option.name data-ng-click='setSelectedItem()'>{{option.name}}<span data-ng-class='isChecked(option)'></span></a></li>                                       
+      </ul>
+ </div>
